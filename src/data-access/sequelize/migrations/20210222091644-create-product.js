@@ -7,24 +7,30 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
+      }, 
+      product_barcode: {
+        type: Sequelize.STRING
       },
       product_name: {
         type: Sequelize.STRING
       },
-      sub_description: {
+      product_description: {
         type: Sequelize.STRING
       },
-      quantity_in_stock: {
-        type: Sequelize.INTEGER
+      cost_unit: {
+        type: Sequelize.STRING
       },
-      unit_price: {
-        type: Sequelize.DECIMAL
+      price: {
+        type: Sequelize.STRING
       },
-      barcode: {
-        type: Sequelize.INTEGER
+      stocks: {
+        type: Sequelize.STRING
       },
-      supplier_id: {
-        type: Sequelize.INTEGER
+      Expiry_date: {
+        type: Sequelize.DATE
+      },
+      delivery_code: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

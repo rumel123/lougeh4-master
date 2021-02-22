@@ -4,6 +4,8 @@ const fetchOneItem = ({findDataBC,query}) => {
         const data = {
             delivery_code:datas.Dc()
         }
+
+        
         return data
     }
 }

@@ -14,12 +14,20 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   product.init({
+    product_id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
+    product_barcode: DataTypes.STRING,
     product_name: DataTypes.STRING,
-    sub_description: DataTypes.STRING,
-    quantity_in_stock: DataTypes.INTEGER,
-    unit_price: DataTypes.DECIMAL,
-    barcode: DataTypes.INTEGER,
-    supplier_id: DataTypes.INTEGER
+    product_description: DataTypes.STRING,
+    cost_unit: DataTypes.STRING,
+    price: DataTypes.STRING,
+    stocks: DataTypes.STRING,
+    Expiry_date: DataTypes.DATE,
+    delivery_code: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'product',

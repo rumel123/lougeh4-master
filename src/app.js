@@ -23,6 +23,8 @@ app.use('/', require('./routes/supplier/app'))
 app.use('/',require('./routes/user/app'))
 //routes for the Deliveries
 app.use('/',require('./routes/deliveries/app'))
+//routes for the products
+app.use('/',require('./routes/products/app'))
 
 
 

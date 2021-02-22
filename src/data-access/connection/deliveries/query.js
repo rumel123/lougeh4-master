@@ -1,21 +1,22 @@
 const deliveryQuery = ({ connections, models }) => {
     return Object.freeze({
-      insertDeliveries,
-      validateDeliveryCode,
-     /*     fetchAllDeliveries,
-        fetchDeliveriesWithProducts,
-        fetchSupplier,*/
+        insertDeliveries,
+        validateDeliveryCode,
+        fetchDeliveries,
+           fetchAllDeliveries,
+         /*    fetchDeliveriesWithProducts,*/
     })
     //insert Deliveries
     async function insertDeliveries({ info }) {
         try {
             const Delivery = models.delivery
-            const {suppliername,delivery_received_date,delivery_code} = info
+            const { suppliername, delivery_received_date, delivery_code } = info
             const result = await Delivery.create({
-                suppliername:suppliername,
-                delivery_received_date:delivery_received_date,
-                delivery_code:delivery_code}) 
-            return result  
+                suppliername: suppliername,
+                delivery_received_date: delivery_received_date,
+                delivery_code: delivery_code
+            })
+            return result
         } catch (error) {
             console.log(error.message)
         }
@@ -24,6 +25,18 @@ const deliveryQuery = ({ connections, models }) => {
     async function fetchAllDeliveries() {
         try {
             const Delivery = models.delivery
+            const data = []
+            const res = await Delivery.findAll()
+            for (let i = 0; i < res.length; i++) {
+                const array = res[i];
+                data.push({
+                    delivery_id: array.dataValues.delivery_id,
+                    suppliername: array.dataValues.suppliername,
+                    delivery_received_date: array.dataValues.delivery_received_date,
+                    delivery_code: array.dataValues.delivery_code
+                })
+            }
+            return data
         } catch (error) {
             console.log(error.message)
         }
@@ -35,25 +48,37 @@ const deliveryQuery = ({ connections, models }) => {
         } catch (error) {
             console.log(error.message)
         }
-        //fetch Supplier
-        async function fetchSupplier() {
-            try {
-                const Delivery = models.delivery
-            } catch (error) {
-                console.log(error.message)
+    }
+    //fetch Supplier
+    async function fetchDeliveries(id) {
+        try {
+            const Delivery = models.delivery
+            const data = []
+            const res = await Delivery.findAll({ where: { delivery_id: id } })
+            for (let i = 0; i < res.length; i++) {
+                const array = res[i];
+                data.push({
+                    delivery_id: array.dataValues.delivery_id,
+                    suppliername: array.dataValues.suppliername,
+                    delivery_received_date: array.dataValues.delivery_received_date,
+                    delivery_code: array.dataValues.delivery_code
+                })
             }
+            return data
+        } catch (error) {
+            console.log(error.message)
         }
     }
     //delivery code validation
     async function validateDeliveryCode({ info }) {
         try {
             const Delivery = models.delivery
-            const {delivery_code} = info
+            const { delivery_code } = info
             const res = await Delivery.findAll({
-                attributes:['delivery_code'],
-                where:{delivery_code:delivery_code}})  
-                console.log(res)
-            return res  
+                attributes: ['delivery_code'],
+                where: { delivery_code: delivery_code }
+            }) 
+            return res
         } catch (error) {
             console.log(error.message)
         }
