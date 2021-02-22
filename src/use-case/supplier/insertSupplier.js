@@ -14,7 +14,7 @@ const insertSupplier = ({postSuppliers,query}) => {
       const res = await query.insertSupplier({data})
       let msg = `Roger We have a problem.`
       //throwing the notification success
-      if (res) msg = `Successfully adding the Supplier.` 
+      if (res) return res
       return msg  
      }
 } 

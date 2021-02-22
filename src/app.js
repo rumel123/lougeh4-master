@@ -21,7 +21,8 @@ app.use('/', require('./routes/customers/app'))
 app.use('/', require('./routes/supplier/app'))
 //routes for Manipulation of User
 app.use('/',require('./routes/user/app'))
-
+//routes for the Deliveries
+app.use('/',require('./routes/deliveries/app'))
 
 
 

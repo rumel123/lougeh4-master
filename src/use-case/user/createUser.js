@@ -13,7 +13,7 @@ const createUser = ({ makeUsers, query }) => {
        //execute to create user
       const res = await query.createUser({data})
       let message = `Roger, We have a problem.` 
-      if(res) message = `Creating User successfully!!` 
+      if(res)  return res
       return message
     };
   };

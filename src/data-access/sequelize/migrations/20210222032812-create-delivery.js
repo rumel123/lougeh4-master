@@ -7,18 +7,15 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
+      }, 
+      suppliername: {
+        type: Sequelize.STRING
       },
-      data_received: {
+      delivery_received_date: {
         type: Sequelize.DATE
       },
-      product_id: {
-        type: Sequelize.INTEGER
-      },
-      quantity_received: {
-        type: Sequelize.INTEGER
-      },
-      cost_per_unit: {
-        type: Sequelize.DECIMAL
+      delivery_code: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

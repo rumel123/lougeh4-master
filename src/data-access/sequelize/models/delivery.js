@@ -14,10 +14,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   delivery.init({
-    data_received: DataTypes.DATE,
-    product_id: DataTypes.INTEGER,
-    quantity_received: DataTypes.INTEGER,
-    cost_per_unit: DataTypes.DECIMAL
+    delivery_id:  {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
+    suppliername: DataTypes.STRING,
+    delivery_received_date: DataTypes.DATE,
+    delivery_code: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'delivery',
